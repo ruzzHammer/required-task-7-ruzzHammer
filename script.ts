@@ -20,7 +20,7 @@ class User implements Person {
         this.popularity = 0;
         
         this.createLI();
-        this.listItem.addEventListener('click', () => this.handleClick());
+        this.listItem.addEventListener('click', () => this.openUser());
     }
 
     createLI(): void {
@@ -31,7 +31,7 @@ class User implements Person {
         this.listItem = userLI;
     }
 
-    handleClick(): void {
+    openUser(): void {
         this.listItem.classList.add('active');
         container.classList.add('details');
         activeUser = this;

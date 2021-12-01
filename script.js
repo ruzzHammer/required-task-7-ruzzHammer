@@ -14,7 +14,7 @@ class User {
         this.friends = user.friends;
         this.popularity = 0;
         this.createLI();
-        this.listItem.addEventListener('click', () => this.handleClick());
+        this.listItem.addEventListener('click', () => this.openUser());
     }
     createLI() {
         const userLI = document.createElement('li');
@@ -23,7 +23,7 @@ class User {
         userLI.insertAdjacentHTML('beforeend', `<strong>${this.name}</strong>`);
         this.listItem = userLI;
     }
-    handleClick() {
+    openUser() {
         this.listItem.classList.add('active');
         container.classList.add('details');
         activeUser = this;
