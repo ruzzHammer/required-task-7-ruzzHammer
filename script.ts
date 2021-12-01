@@ -104,9 +104,13 @@ const backButton: HTMLDivElement = document.querySelector('.back');
 const detailsItemTemplate: HTMLTemplateElement = document.querySelector('#detailsItem');
 
 (async () => {
-    const dataResponse = await fetch('data.json');
-    const persons = await dataResponse.json() as Person[];
-    users = persons.map(person => new User(person));
+    try {
+        const dataResponse = await fetch('data.json');
+        const persons = await dataResponse.json() as Person[];
+        users = persons.map(person => new User(person));
+    } catch {
+        throw new Error('Данные не были получены');
+    }
 })();
 
 function clearDetailsLists(): void {

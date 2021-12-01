@@ -82,9 +82,14 @@ const detailsListsEls = document.querySelectorAll('#detailsList ul');
 const backButton = document.querySelector('.back');
 const detailsItemTemplate = document.querySelector('#detailsItem');
 (() => __awaiter(this, void 0, void 0, function* () {
-    const dataResponse = yield fetch('data.json');
-    const persons = yield dataResponse.json();
-    users = persons.map(person => new User(person));
+    try {
+        const dataResponse = yield fetch('data.json');
+        const persons = yield dataResponse.json();
+        users = persons.map(person => new User(person));
+    }
+    catch (_a) {
+        throw new Error('Данные не были получены');
+    }
 }))();
 function clearDetailsLists() {
     detailsListsEls.forEach(listEl => {
