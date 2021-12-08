@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+const MAX_DETAILS_USERS_SIZE = 3;
 class User {
     constructor(user) {
         this.id = user.id;
@@ -34,22 +35,21 @@ class User {
     checkPopularity() {
         this.popularity++;
         if (!popularUsers.includes(this)) {
-            if (popularUsers.length < 3) {
+            if (popularUsers.length < MAX_DETAILS_USERS_SIZE) {
                 popularUsers.push(this);
             }
-            else if (popularUsers[2].popularity < this.popularity) {
-                popularUsers.splice(2, 1, this);
+            else if (popularUsers[MAX_DETAILS_USERS_SIZE - 1].popularity < this.popularity) {
+                popularUsers.splice(MAX_DETAILS_USERS_SIZE - 1, 1, this);
             }
         }
         popularUsers.sort((a, b) => b.popularity - a.popularity);
     }
     updateUsers() {
         this.friendsUsers = users.filter(user => this.friends.find(id => id === user.id));
-        this.strangersUsers = users.
-            filter(user => user !== this && !this.friendsUsers.includes(user)).
+        this.strangersUsers = users.filter(user => user !== this && !this.friendsUsers.includes(user)).
             sort(() => 0.5 - Math.random());
-        this.friendsUsers.length = 3;
-        this.strangersUsers.length = 3;
+        this.friendsUsers.length = MAX_DETAILS_USERS_SIZE;
+        this.strangersUsers.length = MAX_DETAILS_USERS_SIZE;
     }
     createLists() {
         this.createList(this.friendsUsers, friendsListEl);
