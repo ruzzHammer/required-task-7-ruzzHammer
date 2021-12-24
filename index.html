@@ -11,30 +11,29 @@
 <body>
   <div id="container">
     <div class="list-view">
-      <ul class="contacts-list">
-        <li>
-          <strong>Павел</strong>
-        </li>
-      </ul>
+      <ul class="contacts-list"></ul>
     </div>
     <div class="details-view">
       <div class="back"></div>
       <div class="background"></div>
-      <div><ul>
-        <li class="people-title">Друзья</li>
-        <li><i class="fa fa-male"></i><span >Иван</span></li>
-        <li><i class="fa fa-male"></i><span >Максим</span></li>
-        <li><i class="fa fa-male"></i><span >Марат</span></li>
-        <li class="people-title">Не в друзьях</li>
-        <li><i class="fa fa-male"></i><span >Вася</span></li>
-        <li><i class="fa fa-male"></i><span >Кирилл</span></li>
-        <li><i class="fa fa-male"></i><span >Степан</span></li>
-        <li class="people-title">Популярные люди</li>
-        <li><i class="fa fa-male"></i><span >Елена</span></li>
-        <li><i class="fa fa-male"></i><span >Оля</span></li>
-        <li><i class="fa fa-male"></i><span >Никита</span></li>
-      </ul></div>
+      <ul id="detailsList">
+        <ul id="friends">
+          <li class="people-title">Друзья</li>
+        </ul>
+        <ul id="strangers">
+          <li class="people-title">Не друзья</li>
+        </ul>
+        <ul id="popular">
+          <li class="people-title">Популярные</li>
+        </ul>
+      </ul>
     </div>
   </div>
+   
+  <template id="detailsItem">
+    <li><i class="fa fa-male"></i><span></span></li>
+  </template>
+
+  <script src="script.js"></script>
 </body>
 </html>
